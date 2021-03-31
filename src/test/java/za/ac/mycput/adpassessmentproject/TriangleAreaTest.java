@@ -5,36 +5,60 @@
  */
 package za.ac.mycput.adpassessmentproject;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+//import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
- * @author MICHEL MUEMBO ILUNGA
+ * @author
  */
 public class TriangleAreaTest {
-    
+
+    private TriangleArea x;
+    private TriangleArea y;
+    private TriangleArea z;
+
     public TriangleAreaTest() {
     }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
+
+    @Test
     public void setUp() {
+        x = new TriangleArea();
+        y = new TriangleArea();
+        z = y;
     }
-    
-    @AfterEach
-    public void tearDown() {
+
+    @Test
+    public void testEquality() {
+        assertEquals(x, z);
+    }
+
+    @Test
+    public void testIdentity() {
+        assertSame(z, y);
+    }
+
+    @Test
+    public void failTest() {
+        try {
+            fail("This should fail");
+        } catch (RuntimeException e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test(timeout = 150)
+    public void testTimeout() {
+      int maxNum =3;
+      int prevNum =0;
+      int nextNum =1;
+      
+      for(int i=1; i<=maxNum;++i){
+          System.out.println(prevNum+" ");
+          int sum =prevNum+nextNum;
+          nextNum=sum;
+      }
     }
 
     @Test
@@ -42,5 +66,5 @@ public class TriangleAreaTest {
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
     }
-    
+
 }
